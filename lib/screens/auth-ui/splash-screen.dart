@@ -4,7 +4,7 @@ import 'package:flutter/material.dart';
 
 import 'package:get/get.dart';
 
-import 'package:laptopharbor/screens/auth-ui/welcome-ui.dart';
+import 'package:laptopharbor/screens/auth-ui/welcome-screen.dart';
 
 import 'package:laptopharbor/utils/app-constant.dart';
 
