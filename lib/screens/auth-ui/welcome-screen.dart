@@ -6,6 +6,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
 import 'package:laptopharbor/controllers/google-sign-in-controller.dart';
+import 'package:laptopharbor/screens/auth-ui/sign-in-screen.dart';
 
 import 'package:laptopharbor/utils/app-constant.dart';
 
@@ -104,7 +105,9 @@ class WelcomeScreen extends StatelessWidget {
                     fontSize: 18.0,
                   ),
                   ),
-                  onPressed: () {},
+                  onPressed: () {
+                    Get.to(() => SignInScreen());
+                  },
                 ),
               )
             ),

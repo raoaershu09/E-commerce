@@ -1,12 +1,21 @@
 // ignore: file_names
-// ignore_for_file: avoid_unnecessary_containers
+// ignore_for_file: avoid_unnecessary_containers, unused_local_variable
+
+import 'package:firebase_auth/firebase_auth.dart';
 
 import 'package:flutter/material.dart';
 
 import 'package:flutter_keyboard_visibility/flutter_keyboard_visibility.dart';
 
 import 'package:get/get.dart';
+
+import 'package:laptopharbor/controllers/sign-in-controller.dart';
+
+import 'package:laptopharbor/screens/auth-ui/forget-password-screen.dart';
+
 import 'package:laptopharbor/screens/auth-ui/sign-up-screen.dart';
+
+import 'package:laptopharbor/screens/user-panel/main-screen.dart';
 
 import 'package:laptopharbor/utils/app-constant.dart';
 
@@ -20,6 +29,8 @@ class SignInScreen extends StatefulWidget {
 }
 
 class _SignInScreenState extends State<SignInScreen> {
+  final SignInController signInController = Get.put(SignInController());TextEditingController userEmail = TextEditingController();TextEditingController userPassword = TextEditingController();
+
   @override
   Widget build(BuildContext context) {
     return KeyboardVisibilityBuilder(builder: (context, isKeyboardVisible) {
@@ -51,6 +62,7 @@ class _SignInScreenState extends State<SignInScreen> {
                 child: Padding(
                   padding: const EdgeInsets.all(10.0),
                   child: TextFormField(
+                    controller: userEmail,
                     cursorColor: AppConstant.appSecondoryColor,
                     keyboardType: TextInputType.emailAddress,
                     decoration: InputDecoration(
@@ -71,29 +83,45 @@ class _SignInScreenState extends State<SignInScreen> {
                 width: Get.width,
                 child: Padding(
                   padding: const EdgeInsets.all(10.0),
-                  child: TextFormField(
+                  child: Obx(
+                    () => TextFormField(
+                    controller: userPassword,
+                    obscureText: signInController.isPasswordVisible.value,
                     cursorColor: AppConstant.appSecondoryColor,
                     keyboardType: TextInputType.visiblePassword,
                     decoration: InputDecoration(
                       hintText: "Password",
                       prefixIcon: Icon(Icons.password),
-                      suffixIcon: Icon(Icons.visibility_off),
+                      suffixIcon: GestureDetector(
+                        onTap: () {
+                          signInController.isPasswordVisible.toggle();
+                        },
+                        child: signInController.isPasswordVisible.value
+                        ? Icon(Icons.visibility_off)
+                        : Icon(Icons.visibility),
+                        ),
                       contentPadding: EdgeInsets.only(top: 2.0, left: 8.0),
                       border: OutlineInputBorder(
                         borderRadius: BorderRadius.circular(10.0),
                       )
                     ),
                   ),
+                  )
                 )
                 ),
                 Container(
                   margin: EdgeInsets.symmetric(horizontal: 10.0),
                   alignment: Alignment.centerRight,
-                  child: Text(
-                    "Forget Password?",
-                    style: TextStyle(
-                      color: AppConstant.appSecondoryColor,
-                      fontWeight: FontWeight.bold,
+                  child: GestureDetector(
+                    onTap: () {
+                      Get.to(() => ForgetPasswordScreen());
+                    },
+                    child: Text(
+                      "Forget Password?",
+                      style: TextStyle(
+                        color: AppConstant.appSecondoryColor,
+                        fontWeight: FontWeight.bold,
+                      ),
                     ),
                   ),
                 ),
@@ -117,7 +145,55 @@ class _SignInScreenState extends State<SignInScreen> {
                     fontSize: 18.0,
                   ),
                   ),
-                  onPressed: () {},
+                  onPressed: () async {
+                      String email = userEmail.text.trim();
+                      String password = userPassword.text.trim();
+                      if (
+                        email.isEmpty || password.isEmpty ) {
+                        Get.snackbar(
+                        "Error",
+                        "Please enter all details",
+                        snackPosition: SnackPosition.BOTTOM,
+                        backgroundColor: AppConstant.appSecondoryColor,colorText: AppConstant.appTextColor, 
+                        );
+                  }
+
+                  else{
+                    UserCredential? userCredential = await signInController.signInMethod(email, password);
+
+                  if (userCredential != null) {
+                    if (userCredential.user!.emailVerified) {
+                    Get.snackbar(
+                      "Success",
+                       "Login Successfully!",
+                       snackPosition: SnackPosition.BOTTOM,
+                       backgroundColor: AppConstant.appSecondoryColor,colorText: AppConstant.appTextColor, 
+                       );
+                       
+                        Get.offAll(() => MainScreen());
+                    } 
+                    else {
+                      Get.snackbar(
+                      "Error",
+                      "Please verify your email before login",
+                      snackPosition: SnackPosition.BOTTOM,
+                      backgroundColor: AppConstant.appSecondoryColor,
+                      colorText: AppConstant.appTextColor,
+                      );
+                    }
+                  } 
+
+                  else {
+                    Get.snackbar(
+                      "Error",
+                      "Please try again",
+                      snackPosition: SnackPosition.BOTTOM,
+                      backgroundColor: AppConstant.appSecondoryColor,
+                      colorText: AppConstant.appTextColor,
+                      );
+                  }
+                  }
+                  }
                 ),
               )
             ),
