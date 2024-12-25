@@ -1,5 +1,5 @@
 // ignore: file_names
-// ignore_for_file: avoid_unnecessary_containers, unused_local_variable
+// ignore_for_file: avoid_unnecessary_containers, unused_local_variable, file_names, duplicate_ignore, unnecessary_null_comparison
 
 import 'package:firebase_auth/firebase_auth.dart';
 
@@ -9,7 +9,10 @@ import 'package:flutter_keyboard_visibility/flutter_keyboard_visibility.dart';
 
 import 'package:get/get.dart';
 
+import 'package:laptopharbor/controllers/get-user-data-controller.dart';
+
 import 'package:laptopharbor/controllers/sign-in-controller.dart';
+import 'package:laptopharbor/screens/admin-panel/admin-main-screen.dart';
 
 import 'package:laptopharbor/screens/auth-ui/forget-password-screen.dart';
 
@@ -29,7 +32,9 @@ class SignInScreen extends StatefulWidget {
 }
 
 class _SignInScreenState extends State<SignInScreen> {
-  final SignInController signInController = Get.put(SignInController());TextEditingController userEmail = TextEditingController();TextEditingController userPassword = TextEditingController();
+  final SignInController signInController = Get.put(SignInController());
+  final GetUserDataController getUserDataController = Get.put(GetUserDataController());
+  TextEditingController userEmail = TextEditingController();TextEditingController userPassword = TextEditingController();
 
   @override
   Widget build(BuildContext context) {
@@ -159,19 +164,36 @@ class _SignInScreenState extends State<SignInScreen> {
                   }
 
                   else{
-                    UserCredential? userCredential = await signInController.signInMethod(email, password);
+                    UserCredential? userCredential = await signInController.signInMethod(email, password);  
+
+                    var userData = await getUserDataController
+                    .getUserData(userCredential!.user!.uid);
 
                   if (userCredential != null) {
                     if (userCredential.user!.emailVerified) {
-                    Get.snackbar(
-                      "Success",
+
+                      // 
+                      if (userData [0]['isAdmin'] == true) {
+                        Get.offAll(() => AdminMainScreen());   
+                        Get.snackbar(
+                        "Success Admin Login",
                        "Login Successfully!",
                        snackPosition: SnackPosition.BOTTOM,
                        backgroundColor: AppConstant.appSecondoryColor,colorText: AppConstant.appTextColor, 
                        );
-                       
+
+                        Get.offAll(() => AdminMainScreen());
+                      }
+                      else{
                         Get.offAll(() => MainScreen());
-                    } 
+                         Get.snackbar(
+                        "Success User Login",
+                       "Login Successfully!",
+                       snackPosition: SnackPosition.BOTTOM,
+                       backgroundColor: AppConstant.appSecondoryColor,colorText: AppConstant.appTextColor, 
+                       );
+                      }
+                    }  
                     else {
                       Get.snackbar(
                       "Error",
