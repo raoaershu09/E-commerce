@@ -230,7 +230,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
                             phone,
                             city,
                             password,
-                            userDeviceToken);
+                            );
                             
                             if (userCredential != null) {
                             Get.snackbar(
