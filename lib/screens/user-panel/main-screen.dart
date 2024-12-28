@@ -3,7 +3,11 @@
 
 import 'package:flutter/material.dart';
 
+import 'package:get/get.dart';
+
 import 'package:laptopharbor/utils/app-constant.dart';
+
+import 'package:laptopharbor/widgets/banner-widget.dart';
 
 import 'package:laptopharbor/widgets/custom-drawer-widget.dart';
 
@@ -22,6 +26,20 @@ class MainScreen extends StatelessWidget {
         centerTitle: true,
       ),
       drawer: DrawerWidget(),
+      body: SingleChildScrollView(
+        physics: BouncingScrollPhysics(),
+        child: Column(
+          children: [
+            SizedBox(
+              height: Get.height / 90.0,
+            ),
+
+            // banners
+            BannerWidget(),
+
+          ],
+        ),
+      ),
     );
   }
 }
