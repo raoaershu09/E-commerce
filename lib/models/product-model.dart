@@ -1,4 +1,4 @@
-// ignore_for_file: file_names
+// ignore_for_file: file_names, non_constant_identifier_names
 
 class ProductModel {
   final String productId;
@@ -6,6 +6,7 @@ class ProductModel {
   final String productName;
   final String categoryName;
   final String fullPrice;
+  final String DiscountPrice;
   final List productImages;
   final String deliveryTime;
   final bool isDiscount;
@@ -18,6 +19,7 @@ class ProductModel {
     required this.productName,
     required this.categoryName,
     required this.fullPrice,
+    required this.DiscountPrice,
     required this.productImages,
     required this.deliveryTime,
     required this.isDiscount,
@@ -32,6 +34,7 @@ class ProductModel {
       'productName': productName,
       'categoryName': categoryName,
       'fullPrice': fullPrice,
+      'DiscountPrice':DiscountPrice,
       'productImages': productImages,
       'deliveryTime': deliveryTime,
       'isDiscount': isDiscount,
@@ -47,6 +50,7 @@ class ProductModel {
       productName: json['productName'],
       categoryName: json['categoryName'],
       fullPrice: json['fullPrice'],
+      DiscountPrice: json['DiscountPrice'],
       productImages: json['productImages'],
       deliveryTime: json['deliveryTime'],
       isDiscount: json['isDiscount'],

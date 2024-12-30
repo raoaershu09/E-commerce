@@ -5,6 +5,7 @@ import 'package:flutter/material.dart';
 
 import 'package:get/get.dart';
 import 'package:laptopharbor/screens/user-panel/all-categories-screen.dart';
+import 'package:laptopharbor/screens/user-panel/all-discount-price.dart';
 
 import 'package:laptopharbor/utils/app-constant.dart';
 
@@ -13,6 +14,7 @@ import 'package:laptopharbor/widgets/banner-widget.dart';
 import 'package:laptopharbor/widgets/category-widget.dart';
 
 import 'package:laptopharbor/widgets/custom-drawer-widget.dart';
+import 'package:laptopharbor/widgets/discount-widget.dart';
 
 import 'package:laptopharbor/widgets/heading-widget.dart';
 
@@ -53,12 +55,13 @@ class MainScreen extends StatelessWidget {
             CategoriesWidget(),
 
             HeadingWidget(
-              headingTitle: "All Products",
+              headingTitle: "New Year Discount!!",
               headingSubTitle: "According to your budget",
-              onTap: (){},
+              onTap: () => Get.to(() => AllDiscountPriceScreen()),
               buttonText: "See More>",
             ),
 
+            DiscountWidget(),
           ],
         ),
       ),

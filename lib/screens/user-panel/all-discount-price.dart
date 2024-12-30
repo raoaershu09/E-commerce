@@ -1,33 +1,33 @@
-// ignore_for_file: file_names, sized_box_for_whitespace, avoid_unnecessary_containers, must_be_immutable, unused_local_variable
+// ignore_for_file: file_names, avoid_unnecessary_containers, unnecessary_import, sized_box_for_whitespace, unused_local_variable
 
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:get/get_core/src/get_main.dart';
 import 'package:image_card/image_card.dart';
 import 'package:laptopharbor/models/product-model.dart';
 import 'package:laptopharbor/utils/app-constant.dart';
 
-class AllSingleCategoryProductScreen extends StatefulWidget {
-  String categoryId;
-  AllSingleCategoryProductScreen({super.key, required this.categoryId});
+class AllDiscountPriceScreen extends StatefulWidget {
+  const AllDiscountPriceScreen({super.key});
 
   @override
-  State<AllSingleCategoryProductScreen> createState() => _AllSingleCategoryProductScreenState();
+  State<AllDiscountPriceScreen> createState() => _AllDiscountPriceScreenState();
 }
 
-class _AllSingleCategoryProductScreenState extends State<AllSingleCategoryProductScreen> {
+class _AllDiscountPriceScreenState extends State<AllDiscountPriceScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
         backgroundColor: AppConstant.appMainColor,
-        title: Text('Products'),
+        title: Text("All Discounted Products"),
       ),
       body: FutureBuilder(future: FirebaseFirestore.instance
     .collection('products')
-    .where('categoryId',isEqualTo: widget.categoryId)
+    .where('isDiscount', isEqualTo: true)
     .get(), 
     builder: (BuildContext context, AsyncSnapshot<QuerySnapshot> snapshot){
       if (snapshot.hasError) {
@@ -49,7 +49,7 @@ class _AllSingleCategoryProductScreenState extends State<AllSingleCategoryProduc
       if (snapshot.data!.docs.isEmpty) {
         return Center(
           child: Text(
-            "No category found!"
+            "No products found!"
           ),
         );
       }
@@ -78,7 +78,6 @@ class _AllSingleCategoryProductScreenState extends State<AllSingleCategoryProduc
               productDescription: productData['productDescription'],
               createdAt: productData['createdAt'],
               );
-
               // CategoriesModel categoriesModel = CategoriesModel(
               //   categoryId: snapshot.data!.docs[index]['categoryId'],
               //   categoryImage: snapshot.data!.docs[index]['categoryImage'],
@@ -88,30 +87,50 @@ class _AllSingleCategoryProductScreenState extends State<AllSingleCategoryProduc
               //   );
               return Row(
                 children: [
-                  Padding(
-                    padding: EdgeInsets.all(8.0),
-                    child: Container(
-                      child: FillImageCard(
-                        borderRadius: 20.0,
-                        width: Get.width / 2.3,
-                        heightImage: Get.height / 10, 
-                        imageProvider: CachedNetworkImageProvider(
-                          productModel.productImages[0],
-                        ),
-                        title: Center(
-                          child: Text(
-                            productModel.productName,
-                            style: TextStyle(fontSize: 12.0),
-                            ),
-                            ),
-                            
-                        ),
-                        ),
-                    ),
+                  GestureDetector(
+                    // onTap: () => Get.to(() => AllSingleCategoryProductScreen(
+                    //   categoryId: categoriesModel.categoryId,
+                    // )
+                    // ), 
+                    child: Padding(
+                      padding: EdgeInsets.all(8.0),
+                      child: Container(
+                        child: FillImageCard(
+                          borderRadius: 20.0,
+                          width: Get.width / 2.3,
+                          heightImage: Get.height / 10,
+                          imageProvider: CachedNetworkImageProvider(
+                            productModel.productImages[0],
+                          ),
+                          title: Center(
+                            child: Text(
+                              productModel.productName,
+                              overflow: TextOverflow.ellipsis,
+                              maxLines: 1,
+                              style: TextStyle(fontSize: 12.0),
+                              ),
+                              ),
+                              
+                          ),
+                          ),
+                      ),
+                  ),
                 ],
               );
             },
           );
+        
+        
+        // Container(
+        //   height: Get.height / 5.5,
+        //   child: ListView.builder(
+        //     itemCount: snapshot.data!.docs.length,
+        //     shrinkWrap: true,
+        //     scrollDirection: Axis.horizontal,
+            
+        //     ),
+        // );
+        
       }
 
       return Container();
