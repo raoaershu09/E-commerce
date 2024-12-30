@@ -8,7 +8,7 @@ class ProductModel {
   final String fullPrice;
   final List productImages;
   final String deliveryTime;
-  final bool isSale;
+  final bool isDiscount;
   final String productDescription;
   final dynamic createdAt;
 
@@ -20,7 +20,7 @@ class ProductModel {
     required this.fullPrice,
     required this.productImages,
     required this.deliveryTime,
-    required this.isSale,
+    required this.isDiscount,
     required this.productDescription,
     required this.createdAt,
   });
@@ -34,7 +34,7 @@ class ProductModel {
       'fullPrice': fullPrice,
       'productImages': productImages,
       'deliveryTime': deliveryTime,
-      'isSale': isSale,
+      'isDiscount': isDiscount,
       'productDescription': productDescription,
       'createdAt': createdAt,
     };
@@ -49,7 +49,7 @@ class ProductModel {
       fullPrice: json['fullPrice'],
       productImages: json['productImages'],
       deliveryTime: json['deliveryTime'],
-      isSale: json['isSale'],
+      isDiscount: json['isDiscount'],
       productDescription: json['productDescription'],
       createdAt: json['createdAt'],
     );

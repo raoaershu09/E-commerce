@@ -73,7 +73,7 @@ class _AllSingleCategoryProductScreenState extends State<AllSingleCategoryProduc
               fullPrice: productData['fullPrice'],
               productImages: productData['productImages'],
               deliveryTime: productData['deliveryTime'],
-              isSale: productData['isSale'],
+              isDiscount: productData['isDiscount'],
               productDescription: productData['productDescription'],
               createdAt: productData['createdAt'],
               );

@@ -53,7 +53,7 @@ class MainScreen extends StatelessWidget {
             CategoriesWidget(),
 
             HeadingWidget(
-              headingTitle: "Flash Sale",
+              headingTitle: "All Products",
               headingSubTitle: "According to your budget",
               onTap: (){},
               buttonText: "See More>",
