@@ -4,6 +4,7 @@
 import 'package:flutter/material.dart';
 
 import 'package:get/get.dart';
+import 'package:laptopharbor/screens/user-panel/all-categories-screen.dart';
 
 import 'package:laptopharbor/utils/app-constant.dart';
 
@@ -45,7 +46,7 @@ class MainScreen extends StatelessWidget {
             HeadingWidget(
               headingTitle: "Categories",
               headingSubTitle: "According to your budget",
-              onTap: (){},
+              onTap: () => Get.to(() => AllCategoriesScreen()),
               buttonText: "See More>",
             ),
 
