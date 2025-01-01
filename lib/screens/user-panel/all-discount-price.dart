@@ -91,7 +91,7 @@ class _AllDiscountPriceScreenState extends State<AllDiscountPriceScreen> {
                     // onTap: () => Get.to(() => AllSingleCategoryProductScreen(
                     //   categoryId: categoriesModel.categoryId,
                     // )
-                    // ), 
+                    // ),        
                     child: Padding(
                       padding: EdgeInsets.all(8.0),
                       child: Container(

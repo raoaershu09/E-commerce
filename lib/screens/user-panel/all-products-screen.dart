@@ -15,12 +15,26 @@ import 'package:image_card/image_card.dart';
 import 'package:laptopharbor/models/product-model.dart';
 import 'package:laptopharbor/screens/user-panel/product-detail-screen.dart';
 
-class AllProductsWidget extends StatelessWidget {
-  const AllProductsWidget ({super.key});
+import 'package:laptopharbor/utils/app-constant.dart';
+
+class AllProductsScreen extends StatelessWidget {
+  const AllProductsScreen ({super.key});
 
   @override
   Widget build(BuildContext context) {
-    return FutureBuilder(future: FirebaseFirestore.instance
+    return Scaffold(
+      appBar: AppBar(
+        iconTheme: IconThemeData(
+          color: AppConstant.appTextColor
+        ),
+        backgroundColor: AppConstant.appMainColor,
+        title: Text("All Products",
+        style: TextStyle(
+          color: AppConstant.appTextColor
+        ),
+        ),
+      ),
+      body: FutureBuilder(future: FirebaseFirestore.instance
     .collection('products')
     .where('isDiscount', isEqualTo: false)
     .get(), 
@@ -59,7 +73,7 @@ class AllProductsWidget extends StatelessWidget {
           gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(crossAxisCount: 2,
           mainAxisSpacing: 5,
           crossAxisSpacing: 5,
-          childAspectRatio: 0.90,
+          childAspectRatio: 0.80,
           ),
           itemBuilder: (context, index){
             final productData = snapshot.data!.docs[index];
@@ -88,14 +102,14 @@ class AllProductsWidget extends StatelessWidget {
                   GestureDetector(
                     onTap: () => Get.to(() =>
                      ProductDetailScreen(productModel: productModel)
-                    ),        
+                    ),       
                     child: Padding(
                       padding: EdgeInsets.all(8.0),
                       child: Container(
                         child: FillImageCard(
                           borderRadius: 20.0,
                           width: Get.width / 2.3,
-                          heightImage: Get.height / 7,
+                          heightImage: Get.height / 6,
                           imageProvider: CachedNetworkImageProvider(
                             productModel.productImages[0],
                           ),
@@ -123,6 +137,7 @@ class AllProductsWidget extends StatelessWidget {
       }
       return Container();
     }
+    ),
     );
   }
 }

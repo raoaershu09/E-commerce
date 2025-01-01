@@ -1,4 +1,6 @@
 // ignore: file_names
+// ignore_for_file: avoid_unnecessary_containers, file_names, duplicate_ignore
+
 import 'package:flutter/cupertino.dart';
 
 import 'package:flutter/material.dart';
