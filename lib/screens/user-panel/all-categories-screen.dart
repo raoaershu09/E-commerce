@@ -7,7 +7,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:image_card/image_card.dart';
 import 'package:laptopharbor/models/categories-model.dart';
-import 'package:laptopharbor/screens/user-panel/signle-category-product-screen.dart';
+import 'package:laptopharbor/screens/user-panel/all-single-category-product-screen.dart';
 import 'package:laptopharbor/utils/app-constant.dart';
 
 class AllCategoriesScreen extends StatefulWidget {
