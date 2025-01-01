@@ -43,7 +43,7 @@ class MainScreen extends StatelessWidget {
               Icons.shopping_cart
             ),
             ),
-          )
+          ),
         ],
       ),
       drawer: DrawerWidget(),

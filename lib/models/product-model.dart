@@ -13,6 +13,7 @@ class ProductModel {
   final String productDescription;
   final dynamic createdAt;
 
+
   ProductModel({
     required this.productId,
     required this.categoryId,

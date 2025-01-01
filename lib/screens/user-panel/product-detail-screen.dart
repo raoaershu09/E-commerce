@@ -9,6 +9,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:laptopharbor/models/cart-model.dart';
 import 'package:laptopharbor/models/product-model.dart';
+import 'package:laptopharbor/screens/user-panel/cart-screen.dart';
 import 'package:laptopharbor/utils/app-constant.dart';
 
 class ProductDetailScreen extends StatefulWidget {
@@ -32,6 +33,16 @@ class _ProductDetailScreenState extends State<ProductDetailScreen> {
           "Product Details",
           style: TextStyle(color: AppConstant.appTextColor),
         ),
+        actions: [
+           GestureDetector(
+            onTap: () => Get.to(() => CartScreen()),
+            child: Padding(padding: EdgeInsets.all(8.0),
+            child: Icon(
+              Icons.shopping_cart
+            ),
+            ),
+          ),
+        ],
       ),
       body: Container(
         child: Column(
