@@ -6,6 +6,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_swipe_action_cell/core/cell.dart';
 import 'package:get/get.dart';
+import 'package:laptopharbor/controllers/cart-price-controller.dart';
 import 'package:laptopharbor/models/cart-model.dart';
 import 'package:laptopharbor/utils/app-constant.dart';
 
@@ -18,6 +19,10 @@ class CartScreen extends StatefulWidget {
 
 class _CartScreenState extends State<CartScreen> {
   User? user = FirebaseAuth.instance.currentUser;
+
+  final ProductPriceController productPriceController =
+      Get.put(ProductPriceController());
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -83,10 +88,13 @@ class _CartScreenState extends State<CartScreen> {
                     productTotalPrice: double.parse(
                         productData['productTotalPrice'].toString()),
                   );
+
+                  // calculate price
+                  productPriceController.fetchProductPrice();
                   
+                  // for delete carts from UI
                    return SwipeActionCell(
                     key: ObjectKey(cartModel.productId),
-
                     trailingActions: [
                       SwipeAction(
                         title: "Delete",
@@ -198,10 +206,12 @@ class _CartScreenState extends State<CartScreen> {
         child: Row(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
-              Text(
-                "Total: PKR 12,000",
+               Obx(
+              () => Text(
+                " Total ${productPriceController.totalPrice.value.toStringAsFixed(1)} : PKR",
                 style: TextStyle(fontWeight: FontWeight.bold),
               ),
+            ),
             
             Padding(
               padding: const EdgeInsets.all(8.0),
