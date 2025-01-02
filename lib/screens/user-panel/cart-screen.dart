@@ -8,6 +8,7 @@ import 'package:flutter_swipe_action_cell/core/cell.dart';
 import 'package:get/get.dart';
 import 'package:laptopharbor/controllers/cart-price-controller.dart';
 import 'package:laptopharbor/models/cart-model.dart';
+import 'package:laptopharbor/screens/user-panel/checkout-screen.dart';
 import 'package:laptopharbor/utils/app-constant.dart';
 
 class CartScreen extends StatefulWidget {
@@ -228,7 +229,9 @@ class _CartScreenState extends State<CartScreen> {
                       "Checkout",
                       style: TextStyle(color: AppConstant.appTextColor),
                     ),
-                    onPressed: () {},
+                    onPressed: () {
+                    Get.to(() => CheckOutScreen());
+                    },
                   ),
                 ),
               ),
