@@ -117,7 +117,9 @@ class AllProductsScreen extends StatelessWidget {
                             productModel.productName,
                             overflow: TextOverflow.ellipsis,
                             maxLines: 1,
-                            style: TextStyle(fontSize: 12.0),
+                            style: TextStyle(fontSize: 12.0,
+                            color: AppConstant.productNameColor
+                            ),
                             ),
                             ),
                             footer: Center(

@@ -95,7 +95,10 @@ class _ProductDetailScreenState extends State<ProductDetailScreen> {
                             mainAxisAlignment: MainAxisAlignment.spaceBetween,
                             children: [
                               Text(
-                                widget.productModel.productName
+                                widget.productModel.productName,
+                                style: TextStyle(
+                                  color: AppConstant.productNameColor
+                                ),
                                 ),
 
                                  Icon(Icons.favorite_outline)

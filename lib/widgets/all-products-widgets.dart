@@ -14,6 +14,7 @@ import 'package:image_card/image_card.dart';
 
 import 'package:laptopharbor/models/product-model.dart';
 import 'package:laptopharbor/screens/user-panel/product-detail-screen.dart';
+import 'package:laptopharbor/utils/app-constant.dart';
 
 class AllProductsWidget extends StatelessWidget {
   const AllProductsWidget ({super.key});
@@ -102,7 +103,9 @@ class AllProductsWidget extends StatelessWidget {
                             productModel.productName,
                             overflow: TextOverflow.ellipsis,
                             maxLines: 1,
-                            style: TextStyle(fontSize: 12.0),
+                            style: TextStyle(fontSize: 12.0,
+                            color: AppConstant.productNameColor
+                            ),
                             ),
                             ),
                             footer: Center(

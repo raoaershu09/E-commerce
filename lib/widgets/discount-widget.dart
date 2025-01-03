@@ -99,7 +99,9 @@ class DiscountWidget extends StatelessWidget {
                             title: Center(
                               child: Text(
                                 productModel.productName, 
-                                style: TextStyle(fontSize: 10.0),
+                                style: TextStyle(fontSize: 10.0,
+                                color: AppConstant.productNameColor
+                                ),
                                 ),
                                 ),
                                 footer: Row(

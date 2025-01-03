@@ -23,8 +23,11 @@ class _AllSingleCategoryProductScreenState extends State<AllSingleCategoryProduc
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
+        iconTheme: IconThemeData(color: Colors.white),
         backgroundColor: AppConstant.appMainColor,
-        title: Text('Products'),
+        title: Text('Products',
+        style: TextStyle(color: AppConstant.appTextColor),
+        ),
       ),
       body: FutureBuilder(future: FirebaseFirestore.instance
     .collection('products')
@@ -106,7 +109,9 @@ class _AllSingleCategoryProductScreenState extends State<AllSingleCategoryProduc
                           title: Center(
                             child: Text(
                               productModel.productName,
-                              style: TextStyle(fontSize: 12.0),
+                              style: TextStyle(fontSize: 12.0,
+                              color: AppConstant.productNameColor
+                              ),
                               ),
                               ),
                               

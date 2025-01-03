@@ -28,9 +28,15 @@ class _CartScreenState extends State<CartScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
+         iconTheme: IconThemeData(
+          color: AppConstant.appTextColor
+        ),
         backgroundColor: AppConstant.appMainColor,
         title: Text(
           "Cart Screen",
+           style: TextStyle(
+          color: AppConstant.appTextColor
+        ),
         ),
       ),
       body: StreamBuilder(

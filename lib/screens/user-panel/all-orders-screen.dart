@@ -24,7 +24,14 @@ class _AllOrdersScreenState extends State<AllOrdersScreen> {
     return Scaffold(
       appBar: AppBar(
         backgroundColor: AppConstant.appMainColor,
-        title: Text('All Orders'),
+        iconTheme: IconThemeData(
+          color: AppConstant.appTextColor
+        ),
+        title: Text('All Orders',
+        style: TextStyle(
+          color: AppConstant.appTextColor
+        ),
+        ),
       ),
       body: StreamBuilder(
         stream: FirebaseFirestore.instance

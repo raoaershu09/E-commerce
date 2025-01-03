@@ -36,8 +36,15 @@ class _CheckOutScreenState extends State<CheckOutScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
+         iconTheme: IconThemeData(
+          color: AppConstant.appTextColor
+        ),
         backgroundColor: AppConstant.appMainColor,
-        title: Text('Checkout Screen'),
+        title: Text('Checkout Screen',
+        style: TextStyle(
+          color: AppConstant.appTextColor
+        ),
+        ),
       ),
       body: StreamBuilder(
         stream: FirebaseFirestore.instance

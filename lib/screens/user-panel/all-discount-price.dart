@@ -23,8 +23,11 @@ class _AllDiscountPriceScreenState extends State<AllDiscountPriceScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
+        iconTheme: IconThemeData(color: Colors.white),
         backgroundColor: AppConstant.appMainColor,
-        title: Text("All Discounted Products"),
+        title: Text("All Discounted Products",
+        style: TextStyle(color: AppConstant.appTextColor),
+        ),
       ),
       body: FutureBuilder(future: FirebaseFirestore.instance
     .collection('products')
@@ -107,7 +110,9 @@ class _AllDiscountPriceScreenState extends State<AllDiscountPriceScreen> {
                               productModel.productName,
                               overflow: TextOverflow.ellipsis,
                               maxLines: 1,
-                              style: TextStyle(fontSize: 12.0),
+                              style: TextStyle(fontSize: 12.0,
+                              color: AppConstant.productNameColor
+                              ),
                               ),
                               ),
                               
