@@ -9,6 +9,7 @@ import 'package:get/get.dart';
 import 'package:google_sign_in/google_sign_in.dart';
 
 import 'package:laptopharbor/screens/auth-ui/welcome-screen.dart';
+import 'package:laptopharbor/screens/user-panel/all-orders-screen.dart';
 
 import 'package:laptopharbor/utils/app-constant.dart';
 
@@ -105,21 +106,11 @@ class _DrawerWidgetState extends State<DrawerWidget> {
                 color: Colors.white,),
                 trailing: Icon(Icons.arrow_forward,
                 color: Colors.white,),
-              ),
-              ),
 
-                Padding(
-              padding:
-              const EdgeInsets.symmetric(horizontal: 20.0,),
-              child: ListTile(
-                titleAlignment: ListTileTitleAlignment.center,
-                title: Text("Contact",
-                style: TextStyle(color: Colors.white),
-                ),
-                leading: Icon(Icons.phone_android,
-                color: Colors.white,),
-                trailing: Icon(Icons.arrow_forward,
-                color: Colors.white,),
+                onTap: (){
+                  Get.back();
+                  Get.to(()=> AllOrdersScreen());
+                },
               ),
               ),
 
