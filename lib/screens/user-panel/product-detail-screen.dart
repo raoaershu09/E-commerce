@@ -1,4 +1,4 @@
-// ignore_for_file: file_names, must_be_immutable, avoid_unnecessary_containers, prefer_interpolation_to_compose_strings, avoid_print
+// ignore_for_file: file_names, must_be_immutable, avoid_unnecessary_containers, prefer_interpolation_to_compose_strings, avoid_print, deprecated_member_use
 
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:carousel_slider/carousel_slider.dart';
@@ -11,6 +11,7 @@ import 'package:laptopharbor/models/cart-model.dart';
 import 'package:laptopharbor/models/product-model.dart';
 import 'package:laptopharbor/screens/user-panel/cart-screen.dart';
 import 'package:laptopharbor/utils/app-constant.dart';
+import 'package:url_launcher/url_launcher.dart';
 
 class ProductDetailScreen extends StatefulWidget {
   ProductModel productModel;
@@ -165,7 +166,9 @@ class _ProductDetailScreenState extends State<ProductDetailScreen> {
                     ),
                     ),
                     onPressed: () {
-                      // Get.to(() => SignInScreen());
+                      sendMessageOnWhatsApp(
+                        productModel:widget.productModel
+                      );
                     },
                   ),
                 )
@@ -212,9 +215,25 @@ class _ProductDetailScreenState extends State<ProductDetailScreen> {
     );
   }
 
+  static Future<void> sendMessageOnWhatsApp({
+  required ProductModel productModel}) 
+  async {
+       final number = "03172891599";
+    final message =
+        "Hello Laptop Harbor \n i want to know about this product \n ${productModel.productName} \n ${productModel.productId}";
+
+    final url = 'https://wa.me/$number?text=${Uri.encodeComponent(message)}';
+
+    if (await canLaunch(url)) {
+      await launch(url);
+    } else {
+      throw 'Could not launch $url';
+    }
+  }
+  
   // checkout product exist or not
 
-  Future<void> checkProductExistence({
+   Future<void> checkProductExistence({
   required String uId,
   int quantityIncrement = 1,
   }) async{
