@@ -55,7 +55,7 @@ class _SignInScreenState extends State<SignInScreen> {
               isKeyboardVisible? Text("Welcome to my app")
               :Column(
                 children: [
-                  Lottie.asset('assets/images/animation-icon.json'),
+                  Lottie.asset('assets/images/laptop.json'),
                 ],
               ),
               SizedBox(

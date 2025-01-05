@@ -2,6 +2,7 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:laptopharbor/controllers/cart-price-controller.dart';
 import 'package:laptopharbor/models/order-model.dart';
+import 'package:laptopharbor/screens/user-panel/add-review-screen.dart';
 import 'package:laptopharbor/utils/app-constant.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/cupertino.dart';
@@ -121,6 +122,16 @@ class _AllOrdersScreenState extends State<AllOrdersScreen> {
                                 )
                         ],
                       ),
+                      trailing: orderModel.status == true
+                      ? ElevatedButton(
+                        onPressed: () => Get.to(
+                        () => AddReviewScreen(
+                          orderModel:orderModel
+                        )
+                        ),
+                        child: Text("Review")
+                        )
+                        : SizedBox.shrink(),
                     ),
                   );
                 },

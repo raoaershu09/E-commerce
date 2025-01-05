@@ -12,8 +12,8 @@ class AppConstant {
 
    static const appMainColor = Color(0xFF000000); // Black for main background
   static const appSecondoryColor = Color(0xFF000000); // Dark gray for secondary elements
-  static const appAccentColor = Color(0xFFB0B0B0); // White for text and icons
-  static const appTextColor = Color(0xFFFFFFFF); // Light gray for subtext and details
+  static const appAccentColor = Color(0xFFB0B0B0); // Light gray for subtext and details
+  static const appTextColor = Color(0xFFFFFFFF); // White for text and icons
   static const appStatusBarColor = Color(0xFF1C1C1C); // Very dark gray for status bar
 
   static const productNameColor = Colors.green; 

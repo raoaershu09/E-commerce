@@ -70,7 +70,7 @@ class _SplashScreenState extends State<SplashScreen> {
           children: [
             Expanded(
               child: Container(
-                child: Lottie.asset('assets/images/animation-icon.json'),
+                child: Lottie.asset('assets/images/laptop.json'),
               ),
             ),
             Container(
