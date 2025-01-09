@@ -71,7 +71,7 @@ class SignUpController extends GetxController {
         "Error",
         "$e",
         snackPosition: SnackPosition.BOTTOM,
-        backgroundColor: AppConstant.appSecondoryColor,
+        backgroundColor: AppConstant.appSecondaryColor,
         colorText: AppConstant.appTextColor,
       );
     }

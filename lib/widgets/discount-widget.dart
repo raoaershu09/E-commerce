@@ -113,7 +113,7 @@ class DiscountWidget extends StatelessWidget {
                                     Text(
                                       "${productModel.fullPrice}",
                                       style: TextStyle(fontSize: 10.0,
-                                      color: AppConstant.appSecondoryColor,
+                                      color: AppConstant.appSecondaryColor,
                                       decoration: TextDecoration.lineThrough,
                                       ),
                                     ),

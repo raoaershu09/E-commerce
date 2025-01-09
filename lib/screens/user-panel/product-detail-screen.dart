@@ -1,4 +1,4 @@
-// ignore_for_file: file_names, must_be_immutable, avoid_unnecessary_containers, prefer_interpolation_to_compose_strings, avoid_print, deprecated_member_use, sized_box_for_whitespace, unused_local_variable
+// ignore_for_file: file_names, must_be_immutable, avoid_unnecessary_containers, prefer_interpolation_to_compose_strings, avoid_print, deprecated_member_use, sized_box_for_whitespace, unused_local_variable, non_constant_identifier_names
 
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:carousel_slider/carousel_slider.dart';
@@ -38,6 +38,7 @@ class _ProductDetailScreenState extends State<ProductDetailScreen> {
           "Product Details",
           style: TextStyle(color: AppConstant.appTextColor),
         ),
+        
         actions: [
            GestureDetector(
             onTap: () => Get.to(() => CartScreen()),
@@ -105,8 +106,15 @@ class _ProductDetailScreenState extends State<ProductDetailScreen> {
                                 ),
                                 ),
 
-                                 Icon(Icons.favorite_outline)
-
+                                 GestureDetector(
+                                  child: Icon(
+                                    Icons.favorite_outline,
+                                    ),
+                                    onTap: () async 
+                                    {
+                                      await AddtoWishlist(uId: user!.uid, productId: widget.productModel.productId);
+                                 },
+                                 ),
                             ],
                           )
                         ),
@@ -191,7 +199,7 @@ class _ProductDetailScreenState extends State<ProductDetailScreen> {
                   width: Get.width / 3.0,
                   height: Get.height / 16,
                   decoration: BoxDecoration(
-                    color: AppConstant.appSecondoryColor,
+                    color: AppConstant.appSecondaryColor,
                     borderRadius: BorderRadius.circular(20.0),
                   ),
                   child: TextButton(
@@ -220,7 +228,7 @@ class _ProductDetailScreenState extends State<ProductDetailScreen> {
                   width: Get.width / 3.0,
                   height: Get.height / 16,
                   decoration: BoxDecoration(
-                    color: AppConstant.appSecondoryColor,
+                    color: AppConstant.appSecondaryColor,
                     borderRadius: BorderRadius.circular(20.0),
                   ),
                   child: TextButton(
@@ -232,8 +240,6 @@ class _ProductDetailScreenState extends State<ProductDetailScreen> {
                     ),
                     ),
                     onPressed: () async {
-                      // Get.to(() => SignInScreen());
-
                       await checkProductExistence(uId: user!.uid);
                     },
                   ),
@@ -401,3 +407,32 @@ class _ProductDetailScreenState extends State<ProductDetailScreen> {
     }
   }
 }
+
+Future<void> AddtoWishlist({
+  required String uId,
+  required String productId
+}) async {
+  final DocumentReference documentReference = FirebaseFirestore.instance
+      .collection('wishlist')
+      .doc(uId)
+      .collection('userWishlist')
+      .doc(productId);
+
+  DocumentSnapshot snapshot = await documentReference.get();
+
+  if (snapshot.exists) {
+    print("Product already in wishlist");
+  } else {
+    await FirebaseFirestore.instance.collection('wishlist')
+    .doc(uId)
+    .set(
+      {
+        'uId': uId,
+        'createdAt': DateTime.now(),
+      },
+    );
+    print("Product added to wishlist");
+  }
+}
+
+

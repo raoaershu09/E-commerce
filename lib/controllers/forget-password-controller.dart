@@ -28,7 +28,7 @@ class ForgetPasswordController extends GetxController {
       "Request Sent Successfully",
        "Password reset link sent to $userEmail",
        snackPosition: SnackPosition.BOTTOM,
-       backgroundColor: AppConstant.appSecondoryColor,
+       backgroundColor: AppConstant.appSecondaryColor,
        colorText: AppConstant.appTextColor,
     );
 
@@ -41,7 +41,7 @@ class ForgetPasswordController extends GetxController {
       Get.snackbar("Error",
        "$e",
        snackPosition: SnackPosition.BOTTOM,
-       backgroundColor: AppConstant.appSecondoryColor,
+       backgroundColor: AppConstant.appSecondaryColor,
        colorText: AppConstant.appTextColor,
        
        );

@@ -108,18 +108,6 @@ class _AllCategoriesScreenState extends State<AllCategoriesScreen> {
               );
             },
           );
-        
-        
-        // Container(
-        //   height: Get.height / 5.5,
-        //   child: ListView.builder(
-        //     itemCount: snapshot.data!.docs.length,
-        //     shrinkWrap: true,
-        //     scrollDirection: Axis.horizontal,
-            
-        //     ),
-        // );
-        
       }
 
       return Container();

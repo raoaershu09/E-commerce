@@ -82,13 +82,7 @@ class _AllDiscountPriceScreenState extends State<AllDiscountPriceScreen> {
               productDescription: productData['productDescription'],
               createdAt: productData['createdAt'],
               );
-              // CategoriesModel categoriesModel = CategoriesModel(
-              //   categoryId: snapshot.data!.docs[index]['categoryId'],
-              //   categoryImage: snapshot.data!.docs[index]['categoryImage'],
-              //   categoryName: snapshot.data!.docs[index]['categoryName'],
-              //   createdAt: snapshot.data!.docs[index]['createdAt'],
-              //   updatedAt: snapshot.data!.docs[index]['updatedAt'],
-              //   );
+
               return Row(
                 children: [
                   GestureDetector(
@@ -124,18 +118,6 @@ class _AllDiscountPriceScreenState extends State<AllDiscountPriceScreen> {
               );
             },
           );
-        
-        
-        // Container(
-        //   height: Get.height / 5.5,
-        //   child: ListView.builder(
-        //     itemCount: snapshot.data!.docs.length,
-        //     shrinkWrap: true,
-        //     scrollDirection: Axis.horizontal,
-            
-        //     ),
-        // );
-        
       }
 
       return Container();

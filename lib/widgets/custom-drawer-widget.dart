@@ -10,6 +10,8 @@ import 'package:google_sign_in/google_sign_in.dart';
 
 import 'package:laptopharbor/screens/auth-ui/welcome-screen.dart';
 import 'package:laptopharbor/screens/user-panel/all-orders-screen.dart';
+import 'package:laptopharbor/screens/user-panel/all-products-screen.dart';
+import 'package:laptopharbor/screens/user-panel/main-screen.dart';
 
 import 'package:laptopharbor/utils/app-constant.dart';
 
@@ -75,6 +77,11 @@ class _DrawerWidgetState extends State<DrawerWidget> {
                   color: Colors.white,),
                   trailing: Icon(Icons.arrow_forward,
                   color: Colors.white,),
+
+                  onTap: (){
+                  Get.back();
+                  Get.to(()=> MainScreen());
+                },
               ),
               ),
 
@@ -91,6 +98,11 @@ class _DrawerWidgetState extends State<DrawerWidget> {
                 trailing: Icon(Icons.arrow_forward,
                 color: Colors.white,
                 ),
+
+                 onTap: (){
+                  Get.back();
+                  Get.to(()=> AllProductsScreen());
+                },
               ),
               ),
 
@@ -137,7 +149,7 @@ class _DrawerWidgetState extends State<DrawerWidget> {
               ),
           ],
         ),
-        backgroundColor: AppConstant.appSecondoryColor,
+        backgroundColor: AppConstant.appSecondaryColor,
       ),
     );
   }

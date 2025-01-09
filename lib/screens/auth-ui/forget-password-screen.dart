@@ -29,7 +29,7 @@ class _ForgetPasswordScreenState extends State<ForgetPasswordScreen> {
     return KeyboardVisibilityBuilder(builder: (context, isKeyboardVisible) {
       return Scaffold(
         appBar: AppBar(
-          backgroundColor: AppConstant.appSecondoryColor,
+          backgroundColor: AppConstant.appSecondaryColor,
           centerTitle: true,
           title: Text("Forget Password  ",
           style: TextStyle(
@@ -56,7 +56,7 @@ class _ForgetPasswordScreenState extends State<ForgetPasswordScreen> {
                   padding: const EdgeInsets.all(10.0),
                   child: TextFormField(
                     controller: userEmail,
-                    cursorColor: AppConstant.appSecondoryColor,
+                    cursorColor: AppConstant.appSecondaryColor,
                     keyboardType: TextInputType.emailAddress,
                     decoration: InputDecoration(
                       hintText: "Email",
@@ -79,7 +79,7 @@ class _ForgetPasswordScreenState extends State<ForgetPasswordScreen> {
                 width: Get.width / 2,
                 height: Get.height / 18,
                 decoration: BoxDecoration(
-                  color: AppConstant.appSecondoryColor,
+                  color: AppConstant.appSecondaryColor,
                   borderRadius: BorderRadius.circular(20.0),
                 ),
                 child: TextButton(
@@ -97,7 +97,7 @@ class _ForgetPasswordScreenState extends State<ForgetPasswordScreen> {
                         "Error",
                         "Please enter all details",
                         snackPosition: SnackPosition.BOTTOM,
-                        backgroundColor: AppConstant.appSecondoryColor,colorText: AppConstant.appTextColor, 
+                        backgroundColor: AppConstant.appSecondaryColor,colorText: AppConstant.appTextColor, 
                         );
                         } else {
                           String email = userEmail.text.trim();

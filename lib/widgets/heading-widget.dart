@@ -54,7 +54,7 @@ class HeadingWidget extends StatelessWidget {
                 borderRadius: BorderRadius.circular(20.0),
                 border: Border.all(
                   width: 1.5,
-                  color: AppConstant.appSecondoryColor,
+                  color: AppConstant.appSecondaryColor,
                 )
               ),
               child: Padding(
@@ -64,7 +64,7 @@ class HeadingWidget extends StatelessWidget {
                 style: TextStyle(
                 fontWeight: FontWeight.w500,
                 fontSize: 12.0,
-                color: AppConstant.appSecondoryColor,  
+                color: AppConstant.appSecondaryColor,  
                 ),
                 ),
               ),

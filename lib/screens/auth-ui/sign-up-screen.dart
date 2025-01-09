@@ -36,7 +36,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
     return KeyboardVisibilityBuilder(builder: (context, isKeyboardVisible) {
       return Scaffold(
         appBar: AppBar(
-          backgroundColor: AppConstant.appSecondoryColor,
+          backgroundColor: AppConstant.appSecondaryColor,
           centerTitle: true,
           title: Text("Sign Up",
           style: TextStyle(
@@ -55,7 +55,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
                  Container(
                   alignment: Alignment.center,
                   child: Text("Welcome to my app",
-                  style: TextStyle(color: AppConstant.appSecondoryColor,fontWeight: FontWeight.bold,
+                  style: TextStyle(color: AppConstant.appSecondaryColor,fontWeight: FontWeight.bold,
                   fontSize: 18.0,
                   ),
                   )
@@ -72,7 +72,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
                     padding: const EdgeInsets.all(10.0),
                     child: TextFormField(
                       controller: userEmail,
-                      cursorColor: AppConstant.appSecondoryColor,
+                      cursorColor: AppConstant.appSecondaryColor,
                       keyboardType: TextInputType.emailAddress,
                       decoration: InputDecoration(
                         hintText: "Email",
@@ -93,7 +93,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
                     padding: const EdgeInsets.all(10.0),
                     child: TextFormField(
                       controller: userName,
-                      cursorColor: AppConstant.appSecondoryColor,
+                      cursorColor: AppConstant.appSecondaryColor,
                       keyboardType: TextInputType.name,
                       decoration: InputDecoration(
                         hintText: "UserName",
@@ -114,7 +114,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
                     padding: const EdgeInsets.all(10.0),
                     child: TextFormField(
                       controller: userPhone,
-                      cursorColor: AppConstant.appSecondoryColor,
+                      cursorColor: AppConstant.appSecondaryColor,
                       keyboardType: TextInputType.number,
                       decoration: InputDecoration(
                         hintText: "Phone",
@@ -135,7 +135,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
                     padding: const EdgeInsets.all(10.0),
                     child: TextFormField(
                       controller: userCity,
-                      cursorColor: AppConstant.appSecondoryColor,
+                      cursorColor: AppConstant.appSecondaryColor,
                       keyboardType: TextInputType.streetAddress,
                       decoration: InputDecoration(
                         hintText: "City",
@@ -158,7 +158,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
                       () => TextFormField(
                       controller: userPassword,
                       obscureText: signUpController.isPasswordVisible.value,
-                      cursorColor: AppConstant.appSecondoryColor,
+                      cursorColor: AppConstant.appSecondaryColor,
                       keyboardType: TextInputType.visiblePassword,
                       decoration: InputDecoration(
                         hintText: "Password",
@@ -192,7 +192,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
                   width: Get.width / 2,
                   height: Get.height / 18,
                   decoration: BoxDecoration(
-                    color: AppConstant.appSecondoryColor,
+                    color: AppConstant.appSecondaryColor,
                     borderRadius: BorderRadius.circular(20.0),
                   ),
                   child: TextButton(
@@ -220,7 +220,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
                         "Error",
                         "Please enter all details",
                         snackPosition: SnackPosition.BOTTOM,
-                        backgroundColor: AppConstant.appSecondoryColor,colorText: AppConstant.appTextColor,
+                        backgroundColor: AppConstant.appSecondaryColor,colorText: AppConstant.appTextColor,
                         );
                         } else {
                           UserCredential? userCredential =
@@ -236,7 +236,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
                             Get.snackbar(
                               "Verification email sent.",
                               "Please check your email.",
-                              snackPosition: SnackPosition.BOTTOM,backgroundColor: AppConstant.appSecondoryColor,colorText: AppConstant.appTextColor,
+                              snackPosition: SnackPosition.BOTTOM,backgroundColor: AppConstant.appSecondaryColor,colorText: AppConstant.appTextColor,
                         );
                             
                       await  FirebaseAuth.instance.signOut();
@@ -257,13 +257,13 @@ class _SignUpScreenState extends State<SignUpScreen> {
                 children: [
                   Text(
                     "Already have an account? ",
-                    style: TextStyle(color: AppConstant.appSecondoryColor),
+                    style: TextStyle(color: AppConstant.appSecondaryColor),
                   ),
                   GestureDetector(
                     onTap: () => Get.offAll(() => SignInScreen()),
                     child: Text(
                       "Sign In",
-                      style: TextStyle(color: AppConstant.appSecondoryColor,
+                      style: TextStyle(color: AppConstant.appSecondaryColor,
                       fontWeight: FontWeight.bold),
                     ),
                   ),

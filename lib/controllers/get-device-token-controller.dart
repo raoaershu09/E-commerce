@@ -28,7 +28,7 @@ class GetDeviceTokenController extends GetxController {
     Get.snackbar("Error",
        "$e",
        snackPosition: SnackPosition.BOTTOM,
-       backgroundColor: AppConstant.appSecondoryColor,
+       backgroundColor: AppConstant.appSecondaryColor,
        colorText: AppConstant.appTextColor,
        
        );

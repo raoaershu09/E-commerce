@@ -10,7 +10,6 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_swipe_action_cell/core/cell.dart';
 import 'package:get/get.dart';
-import 'package:razorpay_flutter/razorpay_flutter.dart';
 
 class CheckOutScreen extends StatefulWidget {
   const CheckOutScreen({super.key});
@@ -32,15 +31,8 @@ class _CheckOutScreenState extends State<CheckOutScreen> {
   String? phone;
   String? address;
 
-    final Razorpay _razorpay = Razorpay();
-
   @override
   Widget build(BuildContext context) {
-
-    _razorpay.on(Razorpay.EVENT_PAYMENT_SUCCESS, _handlePaymentSuccess);
-    _razorpay.on(Razorpay.EVENT_PAYMENT_ERROR, _handlePaymentError);
-    _razorpay.on(Razorpay.EVENT_EXTERNAL_WALLET, _handleExternalWallet);
-
     return Scaffold(
       appBar: AppBar(
          iconTheme: IconThemeData(
@@ -171,7 +163,7 @@ class _CheckOutScreenState extends State<CheckOutScreen> {
                   width: Get.width / 2.0,
                   height: Get.height / 18,
                   decoration: BoxDecoration(
-                    color: AppConstant.appSecondoryColor,
+                    color: AppConstant.appSecondaryColor,
                     borderRadius: BorderRadius.circular(20.0),
                   ),
                   child: TextButton(
@@ -285,20 +277,7 @@ class _CheckOutScreenState extends State<CheckOutScreen> {
                       customerAddress: address!,
                       customerDeviceToken: customerToken!,
                     );
-
-                    // var options = {
-                    //   'key': 'Your key',
-                    //   'amount': 1000,
-                    //   'currency': 'USD',
-                    //   'name': 'Acme Corp.',
-                    //   'description': 'Fine T-Shirt',
-                    //   'prefill': {
-                    //     'contact': '8888888888',
-                    //     'email': 'test@razorpay.com'
-                    //   }
-                    // };
-
-                    // _razorpay.open(options);
+                    
                   } else {
                     print("Fill The Details");
                   }
@@ -321,31 +300,6 @@ class _CheckOutScreenState extends State<CheckOutScreen> {
     
   }
 
-   void _handlePaymentSuccess(PaymentSuccessResponse response) {
-    // Do something when payment succeeds
-    //place order serice
 
-    placeOrder(
-      context: context,
-      customerName: name!,
-      customerPhone: phone!,
-      customerAddress: address!,
-      customerDeviceToken: customerToken!,
-    );
-  }
-
-  void _handlePaymentError(PaymentFailureResponse response) {
-    // Do something when payment fails
-  }
-
-  void _handleExternalWallet(ExternalWalletResponse response) {
-    // Do something when an external wallet was selected
-  }
-
-  @override
-  void dispose() {
-    super.dispose();
-    _razorpay.clear();
-  }
 
 }

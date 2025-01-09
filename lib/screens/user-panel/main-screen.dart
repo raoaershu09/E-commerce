@@ -8,6 +8,7 @@ import 'package:laptopharbor/screens/user-panel/all-categories-screen.dart';
 import 'package:laptopharbor/screens/user-panel/all-discount-price.dart';
 import 'package:laptopharbor/screens/user-panel/all-products-screen.dart';
 import 'package:laptopharbor/screens/user-panel/cart-screen.dart';
+import 'package:laptopharbor/screens/user-panel/filter-sort-screen.dart';
 
 import 'package:laptopharbor/utils/app-constant.dart';
 import 'package:laptopharbor/widgets/all-products-widgets.dart';
@@ -78,6 +79,13 @@ class MainScreen extends StatelessWidget {
 
             DiscountWidget(),
 
+            HeadingWidget(
+              headingTitle: "Sort and filter",
+              headingSubTitle: "According to Brand",
+              onTap: () => Get.to(() => FilterSortScreen()),
+              buttonText: "Click here>",
+            ),
+            
             // heading
             HeadingWidget(
               headingTitle: "All Products",

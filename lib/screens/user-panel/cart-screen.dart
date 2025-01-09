@@ -159,7 +159,9 @@ class _CartScreenState extends State<CartScreen> {
                                child: CircleAvatar(
                                   radius: 14.0,
                                   backgroundColor: AppConstant.appMainColor,
-                                  child: Text('-'),
+                                  child: Text('-',
+                                  style: TextStyle(color: AppConstant.appTextColor),
+                                  ),
                                 ),
                              ),
 
@@ -189,7 +191,9 @@ class _CartScreenState extends State<CartScreen> {
                                  child: CircleAvatar(
                                   radius: 14.0,
                                   backgroundColor: AppConstant.appMainColor,
-                                  child: Text('+'),
+                                  child: Text('+',
+                                   style: TextStyle(color: AppConstant.appTextColor),
+                                  ),
                                 ),
                                ),
                           ],
@@ -227,7 +231,7 @@ class _CartScreenState extends State<CartScreen> {
                   width: Get.width / 2.0,
                   height: Get.height / 18,
                   decoration: BoxDecoration(
-                    color: AppConstant.appSecondoryColor,
+                    color: AppConstant.appSecondaryColor,
                     borderRadius: BorderRadius.circular(20.0),
                   ),
                   child: TextButton(
